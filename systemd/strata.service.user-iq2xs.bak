@@ -1,0 +1,15 @@
+[Unit]
+Description=Strata: Qwen3.8-Flash-Next IQ2_XS (загрузка по запросу, выгрузка после 10 мин простоя)
+After=network.target
+
+[Service]
+Type=simple
+Environment=STRATA_COMPONENTS_DIR=/home/j0schi/Program/Strata/local/components
+WorkingDirectory=/home/j0schi/Program/Strata/local
+ExecStart=/home/j0schi/Program/Strata/local/terminal/bin/strata serve --profile /home/j0schi/Program/Strata/local/strata-iq2_xs.json
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=60
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Strata: Qwen3.8 Coder IQ1_M (lazy load, unload after 10 min idle)
+After=network.target
+
+[Service]
+Type=simple
+User=j0schi
+Group=j0schi
+Environment=HOME=/home/j0schi
+Environment=STRATA_COMPONENTS_DIR=/home/j0schi/Program/Strata/local/components
+WorkingDirectory=/home/j0schi/Program/Strata/local
+ExecStart=/home/j0schi/Program/Strata/local/terminal/bin/strata serve --profile /home/j0schi/Program/Strata/local/install/strata-coder-iq1_m.json
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target
